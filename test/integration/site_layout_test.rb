@@ -6,5 +6,6 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     get root_path
     assert_template 'static_pages/home'
     assert_select "a[href=?]", root_path, 1
+    assert_select "a[href=?]", new_user_path, 1
   end
 end
