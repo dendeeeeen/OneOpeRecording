@@ -3,7 +3,7 @@ require "test_helper"
 class UsersLoginTest < ActionDispatch::IntegrationTest
 
   def setup
-    @user = users(:ituki)
+    @user = users(:itsuki)
   end
 
   test "login with valid information" do
