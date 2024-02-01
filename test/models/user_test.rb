@@ -53,4 +53,12 @@ class UserTest < ActiveSupport::TestCase
   test "authenticated? should return false for a user with nil digest" do
     assert_not @user.authenticated?('')
   end
+
+  test "associated clearrecords should be destroyed" do
+    @user.save
+    @user.clearrecords.create!(weapon_id: 1, stage_id: 1)
+    assert_difference 'Clearrecord.count', -1 do
+      @user.destroy
+    end
+  end
 end

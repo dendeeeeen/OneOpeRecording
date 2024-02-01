@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_14_094054) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_18_090117) do
+  create_table "clearrecords", force: :cascade do |t|
+    t.integer "stage_id"
+    t.integer "weapon_id"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "hazard_level", default: 0
+    t.index ["user_id", "stage_id", "weapon_id"], name: "index_clearrecords_on_user_id_and_stage_id_and_weapon_id"
+    t.index ["user_id"], name: "index_clearrecords_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -20,4 +31,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_14_094054) do
     t.integer "authority", default: 0
   end
 
+  add_foreign_key "clearrecords", "users"
 end

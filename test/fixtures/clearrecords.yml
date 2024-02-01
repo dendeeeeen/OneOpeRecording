@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+four:
+  stage_id: 2
+  weapon_id: 2
+  user: itsuki
+
+three:
+  stage_id: 1
+  weapon_id: 2
+  user: itsuki
+
+two:
+  stage_id: 2
+  weapon_id: 1
+  user: itsuki
+
+one:
+  stage_id: 1
+  weapon_id: 1
+  user: itsuki

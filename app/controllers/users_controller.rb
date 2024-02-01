@@ -47,6 +47,11 @@ class UsersController < ApplicationController
     redirect_to users_url, status: :see_other
   end
 
+  def record
+    @user = User.find(params[:id])
+    @records = @user.clearrecords
+  end
+
   private 
   
   def _user_params
