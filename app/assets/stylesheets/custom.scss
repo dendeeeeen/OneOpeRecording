@@ -1,2 +1,62 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+/* ここから全体の指定 */
+/*------------------------------------------------*/
+
+/* デフォルトのテキストスタイル（body） */
+body {
+	font-family: 'Noto Sans JP', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+/*------------------------------------------------*/
+
+
+
+/* ここからナビゲーションバー関連 */
+/*------------------------------------------------*/
+
+/* ナビゲーションバーの背景色 */
+.navbar-dark {
+	background-color: #000000 !important; /* 真っ黒 */
+}
+
+/* ナビゲーションブランド（ワンオペ記録）の文字スタイル */
+.navbar-brand {
+	font-family: Splatoon1;
+	font-size: 26px;
+	font-weight: 700;
+	color: #ff5033 !important;
+}
+
+/* ナビゲーションリンク同士を隔てる線 */
+.vertical-divider {
+	border-left: 1px solid rgba(255, 255, 255, 0.5); /* 半透明の白色 */
+	height: 100%;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+/* ナビゲーションリンクのホバーとアクティブ状態でのフォントウェイトを700に設定 */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+	font-weight: 700;
+}
+
+/* デフォルト状態でドロップダウンメニューを表示しない */
+.dropdown-menu::before {
+	display: none;
+}
+
+/* 768px以下の画面幅でdropdown-menu-rightクラスを無効化 */
+@media (max-width: 767.98px) {
+	.dropdown-menu-right {
+		right: auto;
+		left: 0;
+	}
+}
+
+/*------------------------------------------------*/
+
