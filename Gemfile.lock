@@ -79,6 +79,10 @@ GEM
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
+    bootstrap (4.5.0)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 1.14.3, < 2)
+      sassc-rails (>= 2.0.0)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
@@ -140,6 +144,9 @@ GEM
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
+    libv8-node (18.16.0.0-arm64-darwin)
+    libv8-node (18.16.0.0-x86_64-darwin)
+    libv8-node (18.16.0.0-x86_64-linux)
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -156,6 +163,8 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
+    mini_racer (0.8.0)
+      libv8-node (~> 18.16.0.0)
     minitest (5.18.0)
     minitest-reporters (1.6.0)
       ansi
@@ -186,6 +195,7 @@ GEM
     parallel (1.22.1)
     parser (3.2.2.0)
       ast (~> 2.4.1)
+    popper_js (1.16.1)
     prism (0.18.0)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -338,6 +348,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (= 3.1.18)
   bootsnap (= 1.16.0)
+  bootstrap (= 4.5.0)
   bootstrap-sass (= 3.4.1)
   capybara (= 3.38.0)
   debug (= 1.7.1)
@@ -347,6 +358,7 @@ DEPENDENCIES
   importmap-rails (= 1.1.5)
   irb (= 1.10.0)
   jbuilder (= 2.11.5)
+  mini_racer
   minitest (= 5.18.0)
   minitest-reporters (= 1.6.0)
   puma (= 5.6.5)

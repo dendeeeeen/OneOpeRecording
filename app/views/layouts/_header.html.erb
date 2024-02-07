@@ -12,6 +12,90 @@
   <li><%= link_to "ログアウト",     logout_path, data: { "turbo-method": :delete } %></li>
 <% end %>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-	<a class="navbar-brand" href="#">ワンオペ記録</a>
-</nav>
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">ワンオペ記録</a>
+    
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-toggle="collapse"
+					data-target="#navbarCollapse"
+					aria-controls="navbarCollapse"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <% if logged_in? %>
+          <li class="nav-item">
+            <%= link_to "あなたの記録", record_path(current_user), class: "nav-link menu-item menu-item-あなたの記録" %>
+          </li>
+          
+          <!-- 分割する縦線1 XL以上でのみ表示される -->
+          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto d-none d-xl-block menu-item menu-item-縦線1">
+            <div class="vertical-divider"></div>
+          </li>
+        <% end %>
+        
+        <li class="nav-item">
+          <a class="nav-link menu-item menu-item-みんなの記録" href="#">みんなの記録</a>
+        </li>
+            
+        <!-- 分割する縦線3 XL以上でのみ表示される -->
+        <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto d-none d-xl-block menu-item menu-item-縦線3">
+          <div class="vertical-divider"></div>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle menu-item menu-item-その他の管理" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            その他の管理
+          </a>
+
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item menu-item menu-item-トロフィー管理" href="#">トロフィー管理</a>
+          <a class="dropdown-item menu-item menu-item-アカウント管理" href="#">アカウント管理</a>
+        </div>        
+      </ul>
+
+      <% if logged_in? %>
+
+        <%= link_to "ログアウト", logout_path, class: "btn btn-primary", data: { "turbo-method": :delete } %>
+
+      <% else %>
+
+        <div class="dropdown">
+          <button class="btn btn-sm btn-success dropdown-toggle my-sm-2" type="button" id="dropdownLoginButton" data-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person"></i> ログイン
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <%= form_with(url: login_path, scope: :session, class: "px-4 py-3") do |f| %>
+              <div class="form-group">
+              <%= f.label :アカウント名 %>
+              <%= f.text_field :name, class: "form-control" %>
+              </div>
+              <div class="form-group">
+              <%= f.label :パスワード %>
+              <%= f.password_field :password, class: "form-control" %>
+              </div>
+              <div class="form-group">
+              <%= f.label :remember_me do %>
+                <%= f.check_box :remember_me, class: "form-check-label" %>
+                <span>パスワードを記憶する</span>
+              <% end %>
+              </div>
+              <%= f.submit "ログイン", class: "btn btn-primary" %>
+            <% end %>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">新規の方はこちらから登録</a>
+            <a class="dropdown-item" href="#">パスワードを忘れた方はこちら</a>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </nav>
+</header>
