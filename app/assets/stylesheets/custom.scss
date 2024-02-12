@@ -5,9 +5,9 @@
 
 /* デフォルトのテキストスタイル（body） */
 body {
-	font-family: 'Noto Sans JP', sans-serif;
-	font-size: 14px;
-	font-weight: 400;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 /*------------------------------------------------*/
@@ -19,43 +19,388 @@ body {
 
 /* ナビゲーションバーの背景色 */
 .navbar-dark {
-	background-color: #000000 !important; /* 真っ黒 */
+  background-color: #000000 !important; /* 真っ黒 */
 }
 
 /* ナビゲーションブランド（ワンオペ記録）の文字スタイル */
 .navbar-brand {
-	font-family: Splatoon1;
-	font-size: 26px;
-	font-weight: 700;
-	color: #ff5033 !important;
+  font-family: Splatoon1;
+  font-size: 26px;
+  font-weight: 700;
+  color: #ff5033 !important;
 }
 
 /* ナビゲーションリンク同士を隔てる線 */
 .vertical-divider {
-	border-left: 1px solid rgba(255, 255, 255, 0.5); /* 半透明の白色 */
-	height: 100%;
-	margin-left: 0;
-	margin-right: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.5); /* 半透明の白色 */
+  height: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* ナビゲーションリンクのホバーとアクティブ状態でのフォントウェイトを700に設定 */
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-	font-weight: 700;
+  font-weight: 700;
 }
 
 /* デフォルト状態でドロップダウンメニューを表示しない */
 .dropdown-menu::before {
-	display: none;
+  display: none;
 }
 
 /* 768px以下の画面幅でdropdown-menu-rightクラスを無効化 */
 @media (max-width: 767.98px) {
-	.dropdown-menu-right {
-		right: auto;
-		left: 0;
-	}
+  .dropdown-menu-right {
+    right: auto;
+    left: 0;
+  }
 }
 
 /*------------------------------------------------*/
 
+
+
+/* ここからあなたの記録関連 */
+/*------------------------------------------------*/
+
+#your-records-container table {
+  font-size: 18px;
+  max-width: 1440px; /* 最大横幅を1440pxに設定 */
+  margin: auto; /* 左右のマージンを自動調整して中央に配置 */
+  border-collapse: collapse; /* 境界線を重ねる */
+}
+
+#your-records-container th {
+  font-weight: normal; /* ヘッダ行のフォントを通常の太さに設定 */
+  text-align: center; /* テキストを中央揃えにする */
+  vertical-align: middle; /* テキストと画像を垂直中央にする */
+  padding: 32px 0px !important; /* ヘッダーセルの内側の余白を設定 */
+}
+
+#your-records-container table, 
+#your-records-container th, 
+#your-records-container td {
+  border: none !important; /* 強制的に境界線を非表示にする */
+}
+
+#your-records-container table img {
+  border-radius: 8px; /* 画像の角を丸くする */
+}
+
+#your-records-container th img {
+  display: block;
+  margin: 0 auto 16px; /* 上下にマージンを設定し、画像を中央揃えにする */
+  height: 72px; /* 高さを72pxに固定 */
+}
+
+#your-records-container td img {
+  width: 54px; /* 画像のサイズを40pxに変更 */
+  height: 54px;
+  vertical-align: middle; /* 画像を垂直中央に配置 */
+}
+
+#your-records-container td:not(:first-child) {
+  text-align: center; /* テキストを水平方向の中央に配置 */
+  vertical-align: middle; /* テキストを垂直方向の中央に配置 */
+}
+
+#your-records-container .stage-name {
+  display: block; /* ブロック要素として表示 */
+  line-height: 1.2; /* テキストの行の高さを調整 */
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 1.0); /* X軸Y軸のオフセット、ぼかしの範囲、色 */
+}
+
+#your-records-container .bg {
+  background-image: url('bg.png');
+  background-size: cover;
+}
+
+/* 武器の列以外のthタグに適用するスタイル */
+#your-records-container th:not(:first-child) {
+  min-width: 200px; /* 最小横幅を200pxに設定 */
+}
+
+/* 武器の列以外のtdタグに適用するスタイル */
+#your-records-container td:not(:first-child) {
+  font-family: 'Paintball', sans-serif;
+}
+
+.spacer-your-records {
+  height: 100px; /* 上バーとテーブルの間のスペースを確保 */
+}
+
+.title-image {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#your-records-container .stage-image {
+  width: 72px;
+  height: 72px;
+}
+
+#your-records-container .table {
+  font-family: 'Splatfont2';
+  background-color: #3a414a; /* 白色の背景を設定 */
+  margin-bottom: 40px;
+}
+
+#your-records-container .custom-rounded {
+  border-radius: 12px; /* 角の丸みをカスタム */
+}
+
+#your-records-container .rounded-left-th {
+  border-top-left-radius: 12px; /* 左上の角を丸める */
+}
+
+#your-records-container .rounded-right-th {
+  border-top-right-radius: 12px; /* 右上の角を丸める */
+}
+
+/*------------------------------------------------*/
+
+
+
+/* ここからアカウント管理全体 */
+/*------------------------------------------------*/
+
+#page-account-management {
+  max-width: 960px; /* この幅を調整してセクションの幅を定義 */
+  margin: auto; /* 左右のマージンを自動調整して中央に配置 */
+}
+
+/*------------------------------------------------*/
+
+
+
+/* ここからアカウント一覧用テーブル関連 */
+/*------------------------------------------------*/
+
+/* テーブル全体の設定 */
+#custom-table {
+    max-width: 960px; /* 最大横幅を960pxに設定 */
+}
+
+#custom-table th, 
+#custom-table td {
+  padding-left: 12px; /* 左側のパディングを12pxに設定 */
+  vertical-align: middle; /* 垂直方向に中央揃え */
+}
+
+/* 列幅設定 */
+#custom-table th:nth-child(1), #custom-table td:nth-child(1) {
+  width: 30%; /* 1列目の幅 */
+}
+#custom-table th:nth-child(2), #custom-table td:nth-child(2) {
+  width: 34%; /* 2列目の幅 */
+}
+#custom-table th:nth-child(3), #custom-table td:nth-child(3) {
+  width: 20%; /* 3列目の幅 */
+}
+#custom-table th:nth-child(4), #custom-table td:nth-child(4),
+#custom-table th:nth-child(5), #custom-table td:nth-child(5) {
+  width: 8%; /* 4列目と5列目の幅 */
+}
+
+/*------------------------------------------------*/
+
+
+
+/* ここから検索用テーブル関連 */
+/*------------------------------------------------*/
+
+.spacer-account-management {
+  height: 60px; /* 上バーとテーブルの間のスペースを確保 */
+}
+
+/* テーブル全体の設定 */
+#search-table {
+  max-width: 960px; /* 最大横幅を960pxに設定 */
+}
+
+#search-table td {
+  vertical-align: middle; /* 垂直方向に中央揃え */
+}
+
+/* 列幅設定 */
+#search-table td:nth-child(1) {
+  width: 30%; /* 1列目の幅 */
+}
+#search-table td:nth-child(2) {
+  width: 70%; /* 2列目の幅 */
+}
+
+/* アカウントIDと権限のカラムのスタイル（薄いグレー色にしているだけ） */
+#search-table td:first-child {
+  background-color: #eeeeee;
+}
+
+/* 検索ボタンの横幅 */
+#search-button {
+  width: 200px !important;
+}
+
+/* search-buttonのカスタムスタイル */
+.btn-outline-orange {
+    color: #e84214;
+    background-color: transparent;
+    background-image: none;
+    border-color: #e84214;
+}
+
+.btn-outline-orange:hover,
+.btn-outline-orange:not(:disabled):not(.disabled):active, .btn-outline-orange:not(:disabled):not(.disabled).active,
+.show > .btn-outline-orange.dropdown-toggle {
+    color: #ffffff;
+    background-color: #e84214;
+    border-color: #e84214;
+}
+
+.btn-outline-orange:focus, .btn-outline-orange.focus,
+.btn-outline-orange:not(:disabled):not(.disabled):active:focus, .btn-outline-orange:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-orange.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(232, 66, 20, 0.5);
+}
+
+.btn-outline-orange.disabled, .btn-outline-orange:disabled {
+    color: #e84214;
+    background-color: transparent;
+}
+
+/* 検索ボタン行のカラムのスタイル */
+#search-button-row td {
+  background-color: #ffffff !important; /* 背景色は白 */
+  text-align: center; /* 中央揃え */
+}
+
+/*------------------------------------------------*/
+
+
+
+/* ここからその他のスタイル */
+/*------------------------------------------------*/
+
+/* セクションバーのスタイル */
+.section-bar-title {
+  margin-top: 40px;
+  border-left: 6px solid #e84214; /* 縦棒の色と幅 */
+  padding-left: 10px; /* 縦棒とテキストの間のスペース */
+}
+
+/* セクションのタイトルの設定 */
+.section-title {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 18px; /* タイトルのフォントサイズ */
+  font-weight: 700;
+}
+
+/* セクションのコンテンツの設定 */
+.section-content {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 14px; /* コンテンツのフォントサイズ */
+  font-weight: 400;
+  margin-left: 16px; /* タイトルの縦棒と揃えるための余白 */
+  margin-bottom: 20px;
+}
+
+/*------------------------------------------------*/
+
+/* ここからあなたの記録関連 */
+/*------------------------------------------------*/
+
+#your-records-container table {
+  font-size: 18px;
+  max-width: 1440px; /* 最大横幅を1440pxに設定 */
+  margin: auto; /* 左右のマージンを自動調整して中央に配置 */
+  border-collapse: collapse; /* 境界線を重ねる */
+}
+
+#your-records-container th {
+  font-weight: normal; /* ヘッダ行のフォントを通常の太さに設定 */
+  text-align: center; /* テキストを中央揃えにする */
+  vertical-align: middle; /* テキストと画像を垂直中央にする */
+  padding: 32px 0px !important; /* ヘッダーセルの内側の余白を設定 */
+}
+
+#your-records-container table, 
+#your-records-container th, 
+#your-records-container td {
+  border: none !important; /* 強制的に境界線を非表示にする */
+}
+
+#your-records-container table img {
+  border-radius: 8px; /* 画像の角を丸くする */
+}
+
+#your-records-container th img {
+  display: block;
+  margin: 0 auto 16px; /* 上下にマージンを設定し、画像を中央揃えにする */
+  height: 72px; /* 高さを72pxに固定 */
+}
+
+#your-records-container td img {
+  width: 54px; /* 画像のサイズを40pxに変更 */
+  height: 54px;
+  vertical-align: middle; /* 画像を垂直中央に配置 */
+}
+
+#your-records-container td:not(:first-child) {
+  text-align: center; /* テキストを水平方向の中央に配置 */
+  vertical-align: middle; /* テキストを垂直方向の中央に配置 */
+}
+
+#your-records-container .stage-name {
+  display: block; /* ブロック要素として表示 */
+  line-height: 1.2; /* テキストの行の高さを調整 */
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 1.0); /* X軸Y軸のオフセット、ぼかしの範囲、色 */
+}
+
+#your-records-container .bg {
+  background-image: url('bg.png');
+  background-size: cover;
+}
+
+/* 武器の列以外のthタグに適用するスタイル */
+#your-records-container th:not(:first-child) {
+  min-width: 200px; /* 最小横幅を200pxに設定 */
+}
+
+/* 武器の列以外のtdタグに適用するスタイル */
+#your-records-container td:not(:first-child) {
+  font-family: 'Paintball', sans-serif;
+}
+
+.spacer-your-records {
+  height: 100px; /* 上バーとテーブルの間のスペースを確保 */
+}
+
+.your-records-image {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#your-records-container .stage-image {
+  width: 72px;
+  height: 72px;
+}
+
+#your-records-container .table {
+  font-family: 'Splatfont 2';
+  background-color: #3a414a; /* 白色の背景を設定 */
+  margin-bottom: 40px;
+}
+
+#your-records-container .custom-rounded {
+  border-radius: 12px; /* 角の丸みをカスタム */
+}
+
+#your-records-container .rounded-left-th {
+  border-top-left-radius: 12px; /* 左上の角を丸める */
+}
+
+#your-records-container .rounded-right-th {
+  border-top-right-radius: 12px; /* 右上の角を丸める */
+}
+
+/*------------------------------------------------*/

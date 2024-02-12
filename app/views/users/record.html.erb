@@ -1,7 +1,74 @@
 <% provide(:title, "あなたの記録") %>
-<h1>
-  ユーザ名：<%= @user.name %>
-</h1>
-<% @records.each do |record| %>
-  <li>stage：<%= record.stage_id %>, weapon：<%= record.weapon_id %>, hazard_level：<%= record.hazard_level %></li>
-<% end %>
+
+<div id="content">
+  <div id="page-your-records" class="content-page" >
+    <div class="spacer-your-records"></div>
+    <div id="records-content">
+      <div class="your-records-image">
+      <img src="/assets/your-records-image.png" alt="Title">
+    </div>
+    
+    <div id="your-records-container">
+      <table class="table table-bordered table-striped custom-rounded">
+        <!-- テーブルヘッダ -->
+        <thead>
+          <tr>
+            <th class="bg-dark text-white bg rounded-left-th">
+              <img src="/assets/weapon_random.png" alt="支給ブキ" class="stage-image">
+              <span class="stage-name">支給ブキ</span>
+            </th>
+            <th class="bg-dark text-white bg">
+              <img src="/assets/bg_sockeye_station.png" alt="アラマキ砦" style="width:128px; height:72px;">
+              <span class="stage-name">アラマキ砦</span>
+            </th>
+            <th class="bg-dark text-white bg">
+              <img src="/assets/bg_gone_fission_hydroplant.png" alt="ムニ・エール海洋発電所" style="width:128px; height:72px;">
+              <span class="stage-name">ムニ・エール海洋発電所</span>
+            </th>
+            <th class="bg-dark text-white bg">
+              <img src="/assets/bg_spawning_grounds.png" alt="シェケナダム" style="width:128px; height:72px;">
+              <span class="stage-name">シェケナダム</span>
+            </th>
+            <th class="bg-dark text-white bg">
+              <img src="/assets/bg_marooners_bay.png" alt="難破船ドン・ブラコ" style="width:128px; height:72px;">
+              <span class="stage-name">難破船ドン・ブラコ</span>
+            </th>
+            <th class="bg-dark text-white bg">
+              <img src="/assets/bg_jammin_salmon_junction.png" alt="すじこジャンクション跡" style="width:128px; height:72px;">
+              <span class="stage-name">すじこジャンクション跡</span>
+            </th>
+            <th class="bg-dark text-white bg rounded-right-th">
+              <img src="/assets/bg_salmonid_smokeyard.png" alt="トキシラズいぶし工房" style="width:128px; height:72px;">
+              <span class="stage-name">トキシラズいぶし工房</span>
+            </th>
+          </tr>
+        </thead>
+        
+        <!-- テーブル -->
+        <tbody id="weapon-table-body">
+          <% weapons.each.with_index(1) do |weapon, i| %>
+            <tr>
+              <!-- 武器 -->
+              <td>
+                <div style="display: flex; align-items: center;">
+                  <img src=<%= weapon[:path] %> alt=<%= weapon[:name] %> style="vertical-align: middle;">
+                  <div style="display: block; margin-left: 10px;">
+                    <div style="color: rgb(255, 79, 29);">バイト専用</div>
+                    <div style="color: white; white-space: nowrap;"><%= weapon[:name] %></div>
+                  </div>
+                </div>
+              </td>
+              <!-- キケン度 -->
+              <td><%= trophy_tag(@records.find_by(stage_id: 1, weapon_id: i).hazard_level) %><span style="color: rgba(255, 255, 255, 0.25); font-size: 36px; vertical-align: middle;"><%= @records.find_by(stage_id: 1, weapon_id: i).hazard_level %>%</span></td>
+              <td><%= trophy_tag(@records.find_by(stage_id: 2, weapon_id: i).hazard_level) %><span style="color: rgba(255, 255, 255, 0.25); font-size: 36px; vertical-align: middle;"><%= @records.find_by(stage_id: 2, weapon_id: i).hazard_level %>%</span></td>
+              <td><%= trophy_tag(@records.find_by(stage_id: 3, weapon_id: i).hazard_level) %><span style="color: rgba(255, 255, 255, 0.25); font-size: 36px; vertical-align: middle;"><%= @records.find_by(stage_id: 3, weapon_id: i).hazard_level %>%</span></td>
+              <td><%= trophy_tag(@records.find_by(stage_id: 4, weapon_id: i).hazard_level) %><span style="color: rgba(255, 255, 255, 0.25); font-size: 36px; vertical-align: middle;"><%= @records.find_by(stage_id: 4, weapon_id: i).hazard_level %>%</span></td>
+              <td><%= trophy_tag(@records.find_by(stage_id: 5, weapon_id: i).hazard_level) %><span style="color: rgba(255, 255, 255, 0.25); font-size: 36px; vertical-align: middle;"><%= @records.find_by(stage_id: 5, weapon_id: i).hazard_level %>%</span></td>
+              <td><%= trophy_tag(@records.find_by(stage_id: 6, weapon_id: i).hazard_level) %><span style="color: rgba(255, 255, 255, 0.25); font-size: 36px; vertical-align: middle;"><%= @records.find_by(stage_id: 6, weapon_id: i).hazard_level %>%</span></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
