@@ -65,16 +65,17 @@ module CreateTableHelper
     ]
   end
   
-  def trophy_tag(hazardLevel)
+  def trophy(hazardLevel)
     if hazardLevel >= 200
-      image_tag("/assets/weapon_trophy_rainbow.png", style: "width: 32px; height: 32px; vertical-align: middle;")
+      "/assets/weapon_trophy_rainbow.png"
     elsif hazardLevel >= 120
-      image_tag("/assets/weapon_trophy_gold.png", style: "width: 32px; height: 32px; vertical-align: middle;")
+      "/assets/weapon_trophy_gold.png"
     elsif hazardLevel >= 80
-      image_tag("/assets/weapon_trophy_silver.png", style: "width: 32px; height: 32px; vertical-align: middle;")
+      "/assets/weapon_trophy_silver.png"
     elsif hazardLevel >= 50
-      image_tag("/assets/weapon_trophy_bronze.png", style: "width: 32px; height: 32px; vertical-align: middle;")
+      "/assets/weapon_trophy_bronze.png"
     else
+      nil
     end
   end
 end
