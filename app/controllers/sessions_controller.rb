@@ -1,19 +1,14 @@
 class SessionsController < ApplicationController
 
-  def new
-  end
-
   def create
     user = User.find_by(name: params[:session][:name])
     unless user
       flash.now[:danger] = 'アカウントは登録されていません'
-      render 'new', status: :unprocessable_entity
       return
     end
 
     unless user.authenticate(params[:session][:password])
       flash.now[:danger] = 'パスワードが違います'
-      render 'new', status: :unprocessable_entity
       return
     end
 
