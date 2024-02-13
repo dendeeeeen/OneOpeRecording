@@ -13,7 +13,7 @@
     <%= render 'layouts/script' %>
   </head>
 
-  <body style="background-image: url(&quot;/assets/bg_page-your-records.png&quot;);">
+  <body style='<%= yield(:back_graphic) %>'>
     <%= render 'layouts/header' %>
     <% flash.each do |message_type, message| %>
       <%= message_type %>：<%= message %>
