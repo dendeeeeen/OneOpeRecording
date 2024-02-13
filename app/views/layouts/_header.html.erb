@@ -65,7 +65,7 @@
 
       <% if logged_in? %>
 
-        <%= link_to "ログアウト", logout_path, class: "btn btn-primary", data: { "turbo-method": :delete } %>
+        <%= button_to "ログアウト", logout_path, method: "delete", class: "btn btn-danger" %>
 
       <% else %>
 
@@ -92,7 +92,7 @@
               <%= f.submit "ログイン", class: "btn btn-primary" %>
             <% end %>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href=<%= new_user_path%>>新規の方はこちらから登録</a>
+            <a class="dropdown-item" href=<%= new_user_path %>>新規の方はこちらから登録</a>
           </div>
         </div>
 
