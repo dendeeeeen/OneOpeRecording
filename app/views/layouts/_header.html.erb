@@ -60,6 +60,9 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item menu-item menu-item-トロフィー管理" href="#">トロフィー管理</a>
             <a class="dropdown-item menu-item menu-item-アカウント管理" href="#">アカウント管理</a>
+            <% if logged_in? %>
+              <a class="dropdown-item menu-item menu-item-あなたの記録管理" href=<%= edit_record_path(current_user) %>>あなたの記録管理</a>
+            <% end %>
           </div>
         </li>
       </ul>

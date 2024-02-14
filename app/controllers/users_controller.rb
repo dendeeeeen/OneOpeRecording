@@ -31,6 +31,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit_record
+    @user = User.find(params[:id])
+    @records = @user.clearrecords
+  end
+
   def update
     @user = User.find(params[:id])
     if @user.update(_user_params)
@@ -41,13 +46,34 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_record
+    @user = User.find(params[:id])
+    @records = User.find(params[:id]).clearrecords
+
+    is_success = true
+    params.require(:user).require(:records).each do |record|
+      ip_record = record.permit(:stage_id, :weapon_id, :hazard_level)
+      db_record = @records.find_by(stage_id: ip_record["stage_id"], weapon_id: ip_record["weapon_id"])
+      if ip_record["hazard_level"].to_i != db_record.hazard_level
+        is_success &= db_record.update(hazard_level: ip_record["hazard_level"].to_i)
+      end
+    end
+
+    if is_success
+      flash[:success] = "記録更新しました"
+      redirect_to edit_record_path(@user)
+    else
+      render 'edit_record', status: :unprocessable_entity
+    end
+  end
+
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "削除しました"
     redirect_to users_url, status: :see_other
   end
 
-  def record
+  def show_record
     @user = User.find(params[:id])
     @records = @user.clearrecords
   end
