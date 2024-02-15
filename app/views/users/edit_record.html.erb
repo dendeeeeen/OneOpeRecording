@@ -19,30 +19,12 @@
                 <img src="/assets/weapon_random.png" alt="支給ブキ" class="stage-image">
                 <span class="stage-name">支給ブキ</span>
               </th>
-              <th class="bg-dark text-white bg">
-                <img src="/assets/bg_sockeye_station.png" alt="アラマキ砦" style="width:128px; height:72px;">
-                <span class="stage-name">アラマキ砦</span>
-              </th>
-              <th class="bg-dark text-white bg">
-                <img src="/assets/bg_gone_fission_hydroplant.png" alt="ムニ・エール海洋発電所" style="width:128px; height:72px;">
-                <span class="stage-name">ムニ・エール海洋発電所</span>
-              </th>
-              <th class="bg-dark text-white bg">
-                <img src="/assets/bg_spawning_grounds.png" alt="シェケナダム" style="width:128px; height:72px;">
-                <span class="stage-name">シェケナダム</span>
-              </th>
-              <th class="bg-dark text-white bg">
-                <img src="/assets/bg_marooners_bay.png" alt="難破船ドン・ブラコ" style="width:128px; height:72px;">
-                <span class="stage-name">難破船ドン・ブラコ</span>
-              </th>
-              <th class="bg-dark text-white bg">
-                <img src="/assets/bg_jammin_salmon_junction.png" alt="すじこジャンクション跡" style="width:128px; height:72px;">
-                <span class="stage-name">すじこジャンクション跡</span>
-              </th>
-              <th class="bg-dark text-white bg rounded-right-th">
-                <img src="/assets/bg_salmonid_smokeyard.png" alt="トキシラズいぶし工房" style="width:128px; height:72px;">
-                <span class="stage-name">トキシラズいぶし工房</span>
-              </th>
+              <% stages.each do |stage| %>
+                <th class="bg-dark text-white bg">
+                  <img src=<%= stage[:path] %> alt=<%= stage[:name] %> style="width:128px; height:72px;">
+                  <span class="stage-name"><%= stage[:name] %></span>
+                </th>
+              <% end %>
             </tr>
           </thead>
           
@@ -61,7 +43,7 @@
                   </div>
                 </td>
                 <!-- キケン度 -->
-                <% 1.upto(6) do |si| %>
+                <% stages.each.with_index(1) do |stage, si| %>
                   <td>
                     <%= f.hidden_field 'records[][stage_id]', value: si %>
                     <%= f.hidden_field 'records[][weapon_id]', value: wi %>

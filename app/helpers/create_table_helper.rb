@@ -1,4 +1,15 @@
 module CreateTableHelper
+  def stages
+    @stages = [
+      { name: "アラマキ砦",               path: "/assets/bg_sockeye_station.png"                },
+      { name: "ムニ・エール海洋発電所",   path: "/assets/bg_gone_fission_hydroplant.png"        },
+      { name: "シェケナダム",             path: "/assets/bg_spawning_grounds.png"               },
+      { name: "難破船ドン・ブラコ",       path: "/assets/bg_marooners_bay.png"                  },
+      { name: "すじこジャンクション跡",   path: "/assets/bg_jammin_salmon_junction.png"         },
+      { name: "トキシラズいぶし工房",     path: "/assets/bg_salmonid_smokeyard.png"             },
+    ]
+  end
+
   def weapons
     @weapons = [
       { name: "ボールドマーカー",         path: "/assets/weapon_shooter_sploosh-o-matic.png"    },

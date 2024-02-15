@@ -11,6 +11,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def show_record
+    @user = User.find(params[:id])
+    @records = @user.clearrecords
+  end
+
   def new
     @user = User.new
   end
@@ -18,6 +23,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(_user_params)
     if @user.save
+      weapons.each.with_index(1) do |weapon, wi|
+        stages.each.with_index(1) do |stage, si|
+          @user.clearrecords.create!(weapon_id: wi, stage_id: si)
+        end
+      end
       reset_session
       log_in @user
       flash[:success] = "アカウント登録しました"
@@ -71,11 +81,6 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "削除しました"
     redirect_to users_url, status: :see_other
-  end
-
-  def show_record
-    @user = User.find(params[:id])
-    @records = @user.clearrecords
   end
 
   private 
