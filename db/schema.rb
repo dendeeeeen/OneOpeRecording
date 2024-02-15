@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_18_090117) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_15_092309) do
   create_table "clearrecords", force: :cascade do |t|
     t.integer "stage_id"
     t.integer "weapon_id"
@@ -20,6 +20,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_090117) do
     t.integer "hazard_level", default: 0
     t.index ["user_id", "stage_id", "weapon_id"], name: "index_clearrecords_on_user_id_and_stage_id_and_weapon_id"
     t.index ["user_id"], name: "index_clearrecords_on_user_id"
+  end
+
+  create_table "trophies", force: :cascade do |t|
+    t.integer "stage_id"
+    t.integer "weapon_id"
+    t.integer "color_id"
+    t.integer "hazard_level", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stage_id", "weapon_id", "color_id"], name: "index_trophies_on_stage_id_and_weapon_id_and_color_id"
   end
 
   create_table "users", force: :cascade do |t|

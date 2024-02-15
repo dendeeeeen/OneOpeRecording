@@ -8,4 +8,8 @@ Rails.application.routes.draw do
 
   post   "/login",  to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+  
+  resources :trophies, only: [:index]
+  get    "/trophies/edit",  to: "trophies#edit",    as: 'edit_trophies'
+  patch  "/trophies",       to: "trophies#update",  as: 'update_trophies'
 end

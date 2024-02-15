@@ -1,4 +1,4 @@
-<% provide(:title, "あなたの記録管理") %>
+<% provide(:title, "トロフィ管理") %>
 <% provide(:back_graphic, 'background-image: url(/assets/bg_page-your-records.png);') %>
 
 <div id="content">
@@ -15,7 +15,7 @@
           <!-- テーブルヘッダ -->
           <thead>
             <tr>
-              <th class="bg-dark text-white bg rounded-left-th">
+              <th class="bg-dark text-white bg">
                 <img src="/assets/weapon_random.png" alt="支給ブキ" class="stage-image">
                 <span class="stage-name">支給ブキ</span>
               </th>
@@ -33,7 +33,7 @@
             <% weapons.each.with_index(1) do |weapon, wi| %>
               <tr>
                 <!-- 武器 -->
-                <td>
+                <td style=<%= wi%2==0 ? 'background-color:#3a414a;' : 'background-color:#373e46;'%>>
                   <div style="display: flex; align-items: center;">
                     <img src=<%= weapon[:path] %> alt=<%= weapon[:name] %> style="vertical-align: middle;">
                     <div style="display: block; margin-left: 10px;">

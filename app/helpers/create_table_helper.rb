@@ -76,14 +76,14 @@ module CreateTableHelper
     ]
   end
   
-  def trophy(hazardLevel)
+  def get_trophy(stage_id, weapon_id, hazardLevel)
     if hazardLevel >= 200
       "/assets/weapon_trophy_rainbow.png"
-    elsif hazardLevel >= 120
+    elsif hazardLevel >= Trophy.find_by(stage_id: stage_id, weapon_id: weapon_id, color_id: 1).hazard_level
       "/assets/weapon_trophy_gold.png"
-    elsif hazardLevel >= 80
+    elsif hazardLevel >= Trophy.find_by(stage_id: stage_id, weapon_id: weapon_id, color_id: 2).hazard_level
       "/assets/weapon_trophy_silver.png"
-    elsif hazardLevel >= 50
+    elsif hazardLevel >= Trophy.find_by(stage_id: stage_id, weapon_id: weapon_id, color_id: 3).hazard_level
       "/assets/weapon_trophy_bronze.png"
     else
       nil

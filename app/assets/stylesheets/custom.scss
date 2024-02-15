@@ -76,6 +76,16 @@ body {
 	text-align: center; /* テキストを中央揃えにする */
 	vertical-align: middle; /* テキストと画像を垂直中央にする */
 	padding: 32px 0px !important; /* ヘッダーセルの内側の余白を設定 */
+
+	/* 固定に関するスタイル */
+	position: sticky;
+	top: 50px;
+	left: 0;
+	z-index: 1;
+}
+
+#your-records-container thead tr:first-of-type th:first-of-type {
+	z-index: 2;
 }
 
 #your-records-container table, 
@@ -100,9 +110,21 @@ body {
 	vertical-align: middle; /* 画像を垂直中央に配置 */
 }
 
+#your-records-container td:first-child {
+	text-align: center; /* テキストを水平方向の中央に配置 */
+	vertical-align: middle; /* テキストを垂直方向の中央に配置 */
+	
+	/* 固定に関するスタイル */
+	position: sticky;
+	top: 50px;
+	left: 0;
+	z-index: 1;
+}
+
 #your-records-container td:not(:first-child) {
 	text-align: center; /* テキストを水平方向の中央に配置 */
 	vertical-align: middle; /* テキストを垂直方向の中央に配置 */
+	z-index: 2;
 }
 
 #your-records-container .stage-name {
@@ -112,7 +134,7 @@ body {
 }
 
 #your-records-container .bg {
-	background-image: url('bg.png');
+	background-image: url(/assets/bg.png);
 	background-size: cover;
 }
 
@@ -155,6 +177,127 @@ body {
 }
 
 #your-records-container .rounded-right-th {
+	border-top-right-radius: 12px; /* 右上の角を丸める */
+}
+
+/*------------------------------------------------*/
+
+/* ここからボーダーライン関連 */
+/*------------------------------------------------*/
+
+#border-lines-container table {
+	font-size: 18px;
+	max-width: 1440px; /* 最大横幅を1440pxに設定 */
+	margin: auto; /* 左右のマージンを自動調整して中央に配置 */
+	border-collapse: collapse; /* 境界線を重ねる */
+}
+
+#border-lines-container th {
+	font-weight: normal; /* ヘッダ行のフォントを通常の太さに設定 */
+	text-align: center; /* テキストを中央揃えにする */
+	vertical-align: middle; /* テキストと画像を垂直中央にする */
+	padding: 32px 0px !important; /* ヘッダーセルの内側の余白を設定 */
+
+	/* 固定に関するスタイル */
+	position: sticky;
+	top: 50px;
+	left: 0;
+	z-index: 1;
+}
+
+#border-lines-container thead tr:first-of-type th:first-of-type {
+	z-index: 2;
+}
+
+#border-lines-container table, 
+#border-lines-container th, 
+#border-lines-container td {
+	border: none !important; /* 強制的に境界線を非表示にする */
+}
+
+#border-lines-container table img {
+	border-radius: 8px; /* 画像の角を丸くする */
+}
+
+#border-lines-container th img {
+	display: block;
+	margin: 0 auto 16px; /* 上下にマージンを設定し、画像を中央揃えにする */
+	height: 72px; /* 高さを72pxに固定 */
+}
+
+#border-lines-container td img {
+	width: 54px; /* 画像のサイズを40pxに変更 */
+	height: 54px;
+	vertical-align: middle; /* 画像を垂直中央に配置 */
+}
+
+#border-lines-container td:first-child {
+	text-align: center; /* テキストを水平方向の中央に配置 */
+	vertical-align: middle; /* テキストを垂直方向の中央に配置 */
+	
+	/* 固定に関するスタイル */
+	position: sticky;
+	top: 50px;
+	left: 0;
+	z-index: 1;
+}
+
+#border-lines-container td:not(:first-child) {
+	text-align: center; /* テキストを水平方向の中央に配置 */
+	vertical-align: middle; /* テキストを垂直方向の中央に配置 */
+	z-index: 2;
+}
+
+#border-lines-container .stage-name {
+	display: block; /* ブロック要素として表示 */
+	line-height: 1.2; /* テキストの行の高さを調整 */
+	text-shadow: 2px 2px 1px rgba(0, 0, 0, 1.0); /* X軸Y軸のオフセット、ぼかしの範囲、色 */
+}
+
+#border-lines-container .bg {
+	background-image: url(/assets/bg.png);
+	background-size: cover;
+}
+
+/* 武器の列以外のthタグに適用するスタイル */
+#border-lines-container th:not(:first-child) {
+	min-width: 200px; /* 最小横幅を200pxに設定 */
+}
+
+/* 武器の列以外のtdタグに適用するスタイル */
+#border-lines-container td:not(:first-child) {
+	font-family: 'Splatfont2', sans-serif;
+}
+
+.spacer-border-lines {
+	height: 100px; /* 上バーとテーブルの間のスペースを確保 */
+}
+
+.border-lines-image {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+#border-lines-container .stage-image {
+	width: 72px;
+	height: 72px;
+}
+
+#border-lines-container .table {
+	font-family: 'Splatfont2';
+	background-color: #3a414a; /* 白色の背景を設定 */
+	margin-bottom: 40px;
+}
+
+#border-lines-container .custom-rounded {
+	border-radius: 12px; /* 角の丸みをカスタム */
+}
+
+#border-lines-container .rounded-left-th {
+	border-top-left-radius: 12px; /* 左上の角を丸める */
+}
+
+#border-lines-container .rounded-right-th {
 	border-top-right-radius: 12px; /* 右上の角を丸める */
 }
 
