@@ -15,10 +15,12 @@
 
   <body style='<%= yield(:back_graphic) %>'>
     <%= render 'layouts/header' %>
-    <% flash.each do |message_type, message| %>
-      <%= message_type %>：<%= message %>
-    <% end %>
-    <%= yield %>
-    <%= debug(params) if Rails.env.development? %>
+    <div id="content">
+      <% flash.each do |message_type, message| %>
+        <%= message_type %>：<%= message %>
+      <% end %>
+      <%= yield %>
+      <%= debug(params) if Rails.env.development? %>
+    </div>
   </body>
 </html>

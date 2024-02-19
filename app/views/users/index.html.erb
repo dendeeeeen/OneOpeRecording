@@ -1,3 +1,125 @@
-<% provide(:title, 'ユーザ検索') %>
-<h1>ユーザ検索</h1>
+<% provide(:title, 'ユーザ管理') %>
+<% @users.each do |user| %>
+  <li>
+    <%= link_to user.name, edit_records_path(user) %>
+    <% if logged_in? && current_user.authority == 2 && !current_user?(user) %>
+      <%= link_to "削除", user, data: { "turbo-method": :delete } %>
+    <% end %>
+  </li>
+<% end %>
 
+<div id="page-account-management" class="content-page" style="display: block;">
+  <!-- 検索用セクション -->
+  <div class="section-bar-title">
+  	<h2 class="section-title">任意のアカウントを検索</h2>
+  </div>
+  <div class="section-content">
+  	<p>アカウントIDを入力するか、権限にチェックを入れてください（複数選択できます）</p>
+  </div>
+
+  <!-- 検索用テーブル -->
+  <table class="table table-hover mb-0" id="search-table"><tbody>
+    <tr>
+  	  <td>アカウントID</td>
+  	  <td>
+  	  	<input type="text" class="form-control" id="searchInputAccountID" placeholder="account ID">
+  	  </td>
+  	</tr>
+
+  	<tr>
+  		<td>権限</td>
+  		<td>
+  			<div class="form-check form-check-inline">
+  				<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+  				<label class="form-check-label" for="inlineCheckbox1">閲覧</label>
+  			</div>
+  			<div class="form-check form-check-inline">
+  				<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+  				<label class="form-check-label" for="inlineCheckbox2">記録</label>
+  			</div>
+  			<div class="form-check form-check-inline">
+  				<input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+  				<label class="form-check-label" for="inlineCheckbox3">管理</label>
+  			</div>
+  		</td>
+  	</tr>
+
+  	<tr id="search-button-row">
+  		<td colspan="2"> <!-- この行を1列に拡張 -->
+  			<!-- 検索ボタン -->
+  			<button type="submit" class="btn btn-outline-orange mb-0" id="search-button">検索</button>
+  		</td>
+  	</tr>
+  </tbody></table>
+  
+  <!-- アカウント一覧用セクション -->
+  <div class="section-bar-title">
+  	<h2 class="section-title">該当するアカウント一覧</h2>
+  </div>
+  <div class="section-content">
+  	<p>内容を入力後、「変更」を選択することで変更内容が反映されます</p>
+  </div>
+
+  <!-- アカウント一覧用テーブル -->
+  <table class="table table-sm table-hover table-striped" id="custom-table">
+    <thead class="thead-dark">
+    	<tr>
+    		<th scope="col">現在のアカウントID</th>
+    		<th scope="col">権限</th>
+    		<th scope="col"></th>
+    		<th scope="col">アカウント削除</th>
+    	</tr>
+    </thead>
+    <tbody>
+    	<!-- 各行のデータをここに記述 -->
+    	<tr>
+    		<td>dendeeen</td>
+    		<td>
+    			<select class="form-control">
+    				<option>閲覧</option>
+    				<option>記録</option>
+    				<option>管理</option>
+    			</select>
+    		</td>
+    		<td><button class="btn btn-info">変更</button></td>
+    		<td><button class="btn btn-danger">削除</button></td>
+    	</tr>
+      <tr>
+    		<td>itsuki</td>
+    		<td>
+    			<select class="form-control">
+    		  	<option>閲覧</option>
+    				<option>記録</option>
+    				<option>管理</option>
+    			</select>
+    			</td>
+    			<td><button class="btn btn-info">変更</button></td>
+    			<td><button class="btn btn-danger">削除</button></td>
+    	</tr>
+      <tr>
+    		<td>ume</td>
+    		<td>
+    			<select class="form-control">
+    			  <option>閲覧</option>
+    			  <option>記録</option>
+    		  	<option>管理</option>
+    		  </select>
+    		</td>
+    		<td><button class="btn btn-info">変更</button></td>
+    		<td><button class="btn btn-danger">削除</button></td>
+    	</tr>
+    	<tr>
+    		<td>santa</td>
+    		<td>
+    			<select class="form-control">
+    				<option>閲覧</option>
+    				<option>記録</option>
+    				<option>管理</option>
+    			</select>
+    		</td>
+    		<td><button class="btn btn-info">変更</button></td>
+    		<td><button class="btn btn-danger">削除</button></td>
+    	</tr>
+    </tbody>
+  </table>
+</div>
