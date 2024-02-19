@@ -7,6 +7,7 @@ module CreateTableHelper
       { name: "難破船ドン・ブラコ",       path: "/assets/bg_marooners_bay.png"                  },
       { name: "すじこジャンクション跡",   path: "/assets/bg_jammin_salmon_junction.png"         },
       { name: "トキシラズいぶし工房",     path: "/assets/bg_salmonid_smokeyard.png"             },
+      { name: "どんぴこ闘技場",           path: "/assets/bg_bonerattle_arena.png"               },
     ]
   end
 
@@ -71,6 +72,8 @@ module CreateTableHelper
       { name: "LACT-450",                 path: "/assets/weapon_stringer_reeflux450.png"        },
       { name: "ジムワイパー",             path: "/assets/weapon_saber_splatanastamper.png"      },
       { name: "ドライブワイパー",         path: "/assets/weapon_saber_splatanawiper.png"        },
+      { name: "ガエンFF",                 path: "/assets/weapon_random.png"                     },
+      { name: "24式張替傘・甲",           path: "/assets/weapon_random.png"                     },
       { name: "ランダム",                 path: "/assets/weapon_random.png"                     },
       { name: "クマフェス",               path: "/assets/weapon_random_golden.png"              },
     ]
@@ -79,11 +82,11 @@ module CreateTableHelper
   def get_trophy(stage_id, weapon_id, hazardLevel)
     if hazardLevel >= 200
       "/assets/weapon_trophy_rainbow.png"
-    elsif hazardLevel >= hazardLevel
+    elsif hazardLevel >= Trophy.find_by(stage_id: stage_id, weapon_id: weapon_id, color_id: 1).hazard_level
       "/assets/weapon_trophy_gold.png"
-    elsif hazardLevel >= hazardLevel
+    elsif hazardLevel >= Trophy.find_by(stage_id: stage_id, weapon_id: weapon_id, color_id: 2).hazard_level
       "/assets/weapon_trophy_silver.png"
-    elsif hazardLevel >= hazardLevel
+    elsif hazardLevel >= Trophy.find_by(stage_id: stage_id, weapon_id: weapon_id, color_id: 3).hazard_level
       "/assets/weapon_trophy_bronze.png"
     else
       nil
