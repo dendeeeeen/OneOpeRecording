@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def show_record
+  def show_records
     @user = User.find(params[:id])
     @records = @user.clearrecords
   end
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def edit_record
+  def edit_records
     @user = User.find(params[:id])
     @records = @user.clearrecords
   end
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def update_record
+  def update_records
     @user = User.find(params[:id])
     @records = User.find(params[:id]).clearrecords
 
@@ -71,9 +71,9 @@ class UsersController < ApplicationController
 
     if is_success
       flash[:success] = "記録更新しました"
-      redirect_to edit_record_path(@user)
+      redirect_to edit_records_path(@user)
     else
-      render 'edit_record', status: :unprocessable_entity
+      render 'edit_records', status: :unprocessable_entity
     end
   end
 

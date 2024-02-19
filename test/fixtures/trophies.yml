@@ -4,8 +4,22 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+<% 1.upto(100) do |wi| %> 
+  <% 1.upto(7) do |si| %> 
+    test_trophy_<%= wi %>_<%= si %>_1:
+      weapon_id: <%= wi %>
+      stage_id: <%= si %>
+      color_id: 1
+      hazard_level: 150
+    test_trophy_<%= wi %>_<%= si %>_2:
+      weapon_id: <%= wi %>
+      stage_id: <%= si %>
+      color_id: 2,
+      hazard_level: 100
+    test_trophy_<%= wi %>_<%= si %>_3:
+      weapon_id: <%= wi %>
+      stage_id: <%= si %>
+      color_id: 3
+      hazard_level: 50
+  <% end %> 
+<% end %> 

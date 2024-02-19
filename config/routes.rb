@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   root "static_pages#home"
 
   resources :users
-  get    "/record/:id/edit",  to: "users#edit_record",    as: 'edit_record'
-  get    "/record/:id",       to: "users#show_record",    as: 'record'
-  patch  "/record/:id",       to: "users#update_record",  as: 'update_record'
+  get    "/records/:id/edit",  to: "users#edit_records",    as: 'edit_records'
+  get    "/records/:id",       to: "users#show_records",    as: 'records'
+  patch  "/records/:id",       to: "users#update_records",  as: 'update_records'
+  get    "/admin",             to: "users#searches",         as: 'search_user'
 
   post   "/login",  to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
