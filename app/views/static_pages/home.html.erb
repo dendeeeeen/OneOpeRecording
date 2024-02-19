@@ -1,3 +1,61 @@
 <% provide(:page_title, "ホーム") %>
-<h1>サーモンランワンオペ記録ページ</h1>
-<p>ホーム</p>
+<% provide(:back_graphic, 'background-image: url(/assets/bg_page-your-records.png);') %>
+
+<div id="content">
+  <div id="page-your-records" class="content-page" >
+    <div id="records-content">
+      <div class="your-records-image">
+      <img src="/assets/your-records-image.png" alt="Title">
+    </div>
+
+    <div id="your-records-container">
+      <table class="table table-bordered table-striped custom-rounded ">
+        <!-- テーブルヘッダ -->
+        <thead>
+          <tr>
+            <th class="bg-dark text-white bg">
+              <img src="/assets/weapon_random.png" alt="支給ブキ" class="stage-image">
+              <span class="stage-name">支給ブキ</span>
+            </th>
+            <% stages.each do |stage| %>
+              <th class="bg-dark text-white bg">
+                <img src=<%= stage[:path] %> alt=<%= stage[:name] %> style="width:128px; height:72px;">
+                <span class="stage-name"><%= stage[:name] %></span>
+              </th>
+            <% end %>
+          </tr>
+        </thead>
+        
+        <!-- テーブル -->
+        <tbody id="weapon-table-body">
+          <% weapons.each.with_index(1) do |weapon, wi| %>
+            <tr>
+              <!-- 武器 -->
+              <td style=<%= wi%2==0 ? 'background-color:#3a414a;' : 'background-color:#373e46;'%>>
+                <div style="display: flex; align-items: center;">
+                  <img src=<%= weapon[:path] %> alt=<%= weapon[:name] %> style="vertical-align: middle;">
+                  <div style="display: block; margin-left: 10px;">
+                    <div style="color: rgb(255, 79, 29);">バイト専用</div>
+                    <div style="color: white; white-space: nowrap;"><%= weapon[:name] %></div>
+                  </div>
+                </div>
+              </td>
+              <!-- キケン度 -->
+              <% stages.each.with_index(1) do |stage, si| %>
+                <td>
+                  <% hl = rand(0..333) %>
+                  <% if tsrc = get_trophy(si, wi, hl) %>
+                    <img src=<%= tsrc %> style="width: 32px; height: 32px;" >
+                    <span style="display: inline-block; color: rgba(255, 255, 255); font-size: 36px; vertical-align: middle; min-width: 105px; text-align: right;"><%= hl %>%</span>
+                  <% else %>
+                    <span style="display: inline-block; color: rgba(255, 255, 255); font-size: 36px; vertical-align: middle; min-width: 137px; text-align: right;"><%= hl %>%</span>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
