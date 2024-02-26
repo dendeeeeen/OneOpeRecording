@@ -1,12 +1,4 @@
 <% provide(:title, 'ユーザ管理') %>
-<% @users.each do |user| %>
-  <li>
-    <%= link_to user.name, edit_records_path(user) %>
-    <% if logged_in? && current_user.authority == 2 && !current_user?(user) %>
-      <%= link_to "削除", user, data: { "turbo-method": :delete } %>
-    <% end %>
-  </li>
-<% end %>
 
 <div id="page-account-management" class="content-page" style="display: block;">
   <!-- 検索用セクション -->
@@ -71,55 +63,16 @@
     	</tr>
     </thead>
     <tbody>
-    	<!-- 各行のデータをここに記述 -->
-    	<tr>
-    		<td>dendeeen</td>
-    		<td>
-    			<select class="form-control">
-    				<option>閲覧</option>
-    				<option>記録</option>
-    				<option>管理</option>
-    			</select>
-    		</td>
-    		<td><button class="btn btn-info">変更</button></td>
-    		<td><button class="btn btn-danger">削除</button></td>
-    	</tr>
-      <tr>
-    		<td>itsuki</td>
-    		<td>
-    			<select class="form-control">
-    		  	<option>閲覧</option>
-    				<option>記録</option>
-    				<option>管理</option>
-    			</select>
-    			</td>
-    			<td><button class="btn btn-info">変更</button></td>
-    			<td><button class="btn btn-danger">削除</button></td>
-    	</tr>
-      <tr>
-    		<td>ume</td>
-    		<td>
-    			<select class="form-control">
-    			  <option>閲覧</option>
-    			  <option>記録</option>
-    		  	<option>管理</option>
-    		  </select>
-    		</td>
-    		<td><button class="btn btn-info">変更</button></td>
-    		<td><button class="btn btn-danger">削除</button></td>
-    	</tr>
-    	<tr>
-    		<td>santa</td>
-    		<td>
-    			<select class="form-control">
-    				<option>閲覧</option>
-    				<option>記録</option>
-    				<option>管理</option>
-    			</select>
-    		</td>
-    		<td><button class="btn btn-info">変更</button></td>
-    		<td><button class="btn btn-danger">削除</button></td>
-    	</tr>
+			<% @users.each do |user| %>
+    		<tr>
+					<td><%= link_to user.name, edit_user_path(user) %></td>
+					<%= form_with(model: user) do |f| %>
+						<td><%= f.select :authority, [["閲覧", 0],["記録", 1],["管理", 2]], {}, {class: 'form-control'} %></td>
+    				<td><%= f.submit '変更', class: "btn btn-info"%></td>
+					<% end %>
+    			<td><%= button_to "削除", user_path(user.id), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } }, class: "btn btn-danger" } %></button></td>
+    		</tr>
+			<% end %>
     </tbody>
   </table>
 </div>

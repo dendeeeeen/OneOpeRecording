@@ -1,20 +1,26 @@
 users = []
 
-# メインのサンプルユーザーを1人作成する
+# サンプルユーザーを1人作成する
 users << User.create!(name:  "でんちゅう",
   password:              "foobar",
   password_confirmation: "foobar",
   authority: 2)
 
-# メインのサンプルユーザーを1人作成する
+# サンプルユーザーを1人作成する
 users << User.create!(name:  "いつき",
   password:              "foobar",
   password_confirmation: "foobar",
   authority: 1)
 
+# サンプルユーザーを1人作成する
+users << User.create!(name:  "santa",
+  password:              "foobar",
+  password_confirmation: "foobar",
+  authority: 0)
+
 # クリア記録を追加する
 users.each do |user|
-  100.times do |n|
+  80.times do |n|
     user.clearrecords.create!(weapon_id: n+1, stage_id: 1, hazard_level: rand(333))
     user.clearrecords.create!(weapon_id: n+1, stage_id: 2, hazard_level: rand(333))
     user.clearrecords.create!(weapon_id: n+1, stage_id: 3, hazard_level: rand(333))
@@ -25,7 +31,7 @@ users.each do |user|
   end
 end
 
-1.upto(100) do |wi|
+1.upto(80) do |wi|
   1.upto(7) do |si|
     Trophy.create!(
       weapon_id: wi,

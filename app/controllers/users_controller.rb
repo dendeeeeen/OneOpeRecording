@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
-  before_action :_logged_in_user, only: [:edit, :update, :destroy]
+  before_action :_logged_in_user, only: [:index, :edit, :update, :destroy, :edit_records, :update_records]
   before_action :_correct_user,   only: [:edit, :update]
-  before_action :_admin_user,     only: :destroy
+  before_action :_recording_user, only: [:edit_records, :update_records]
+  before_action :_admin_user,     only: [:index, :destroy]
 
   def index
     @users = User.all
+    store_location
   end
 
   def search
@@ -43,6 +45,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    store_location
   end
 
   def edit_records
@@ -54,9 +57,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(_user_params)
       flash[:success] = "アカウント更新しました"
-      redirect_to @user
+      redirect_to session[:forwarding_url]
     else
-      render 'edit', status: :unprocessable_entity
+      flash[:danger] = "アカウント更新に失敗しました"
+      redirect_to session[:forwarding_url]
     end
   end
 
@@ -90,26 +94,40 @@ class UsersController < ApplicationController
   private 
   
   def _user_params
-    params.require(:user).permit(:name, :password, :password_confirmation)
+    params.require(:user).permit(:name, :password, :password_confirmation, :authority)
   end
 
   # ログイン済みユーザーかどうか確認
   def _logged_in_user
     unless logged_in?
-      store_location
       flash[:danger] = "ログインしてください"
-      redirect_to login_url, status: :see_other
+      redirect_to(root_path, status: :see_other)
     end
   end
 
   # 正しいユーザーかどうか確認
   def _correct_user
     @user = User.find(params[:id])
-    redirect_to(root_url, status: :see_other) unless @user == current_user
+    if @user != current_user && current_user.authority < 2
+      flash[:danger] = "権限がありません"
+      redirect_to(root_path, status: :see_other)
+    end
+  end
+
+  # 記録権限があるか確認
+  def _recording_user 
+    @user = User.find(params[:id])
+    if current_user.authority < 1 || current_user == @user
+      flash[:danger] = "記録権限がありません"
+      redirect_to(root_path, status: :see_other)
+    end
   end
 
   # 管理者かどうか確認
   def _admin_user
-    redirect_to(root_url, status: :see_other) unless current_user.authority == 2
+    if current_user.authority < 2
+      flash[:danger] = "管理権限がありません"
+      redirect_to(root_path, status: :see_other)
+    end
   end
 end

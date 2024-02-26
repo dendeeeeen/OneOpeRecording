@@ -11,3 +11,4 @@ michael:
 archer:
   name: Sterling Archer
   password_digest: <%= User.digest('password') %>
+  authority: 1
