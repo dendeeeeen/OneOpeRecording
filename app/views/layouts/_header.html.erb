@@ -18,7 +18,7 @@
       <ul class="navbar-nav mr-auto">
         <% if logged_in? %>
           <li class="nav-item">
-            <%= link_to "あなたの記録", records_path(current_user), class: "nav-link menu-item menu-item-あなたの記録" %>
+            <%= link_to "あなたの記録", user_path(current_user), class: "nav-link menu-item menu-item-あなたの記録" %>
           </li>
           
           <!-- 分割する縦線1 XL以上でのみ表示される -->

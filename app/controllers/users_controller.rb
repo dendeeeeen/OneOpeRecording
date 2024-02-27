@@ -15,10 +15,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-  end
-
-  def show_records
-    @user = User.find(params[:id])
     @records = @user.clearrecords
   end
 
