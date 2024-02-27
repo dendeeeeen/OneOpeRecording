@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   resources :users
   get    "/records/:id/edit",  to: "users#edit_records",    as: 'edit_records'
-  get    "/records/:id",       to: "users#show_records",    as: 'records'
   patch  "/records/:id",       to: "users#update_records",  as: 'update_records'
 
   post   "/login",  to: "sessions#create"
