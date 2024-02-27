@@ -58,20 +58,21 @@
     	<tr>
     		<th scope="col">現在のアカウントID</th>
     		<th scope="col">権限</th>
-    		<th scope="col"></th>
     		<th scope="col">アカウント削除</th>
     	</tr>
     </thead>
     <tbody>
 			<% @users.each do |user| %>
-				<%= form_with(model: user) do |f| %>
-					<tr>
-						<td><%= link_to user.name, edit_user_path(user) %></td>
-						<td><%= f.select :authority, [["閲覧", 0],["記録", 1],["管理", 2]], {}, {class: 'form-control'} %></td>
-						<td><%= f.submit '変更', class: "btn btn-info"%></td>
-						<td><%= button_to "削除", user_path(user.id), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } }, class: "btn btn-danger" } %></button></td>
-					</tr>
-				<% end %>
+				<tr>
+					<td><%= link_to user.name, edit_user_path(user) %></td>						
+					<td>
+						<%= form_with(model: user, class: "form-inline") do |f| %>
+							<%= f.select :authority, [["閲覧", 0],["記録", 1],["管理", 2]], {}, {class: 'form-control'} %>
+							<%= f.submit '変更', class: "btn btn-info form-control"%>
+						<% end %>
+					</td>
+					<td><%= button_to "削除", user_path(user.id), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } }, class: "btn btn-danger" } %></button></td>
+				</tr>
 			<% end %>
     </tbody>
   </table>

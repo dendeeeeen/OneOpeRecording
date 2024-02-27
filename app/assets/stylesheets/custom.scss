@@ -332,13 +332,10 @@ body {
   width: 40%; /* 1列目の幅 */
 }
 #custom-table th:nth-child(2), #custom-table td:nth-child(2) {
-  width: 25%; /* 2列目の幅 */
+  width: 30%; /* 2列目の幅 */
 }
 #custom-table th:nth-child(3), #custom-table td:nth-child(3) {
-  width: 15%; /* 3列目の幅 */
-}
-#custom-table th:nth-child(4), #custom-table td:nth-child(4) {
-  width: 20%; /* 4列目の幅 */
+  width: 30%; /* 3列目の幅 */
 }
 
 /*------------------------------------------------*/

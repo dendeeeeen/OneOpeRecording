@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    store_location
   end
 
   def search
@@ -41,7 +40,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    store_location
   end
 
   def edit_records
@@ -53,10 +51,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(_user_params)
       flash[:success] = "アカウント更新しました"
-      redirect_to session[:forwarding_url]
+      redirect_to request.referer
     else
       flash[:danger] = "アカウント更新に失敗しました"
-      redirect_to session[:forwarding_url]
+      redirect_to request.referer
     end
   end
 
@@ -75,7 +73,7 @@ class UsersController < ApplicationController
 
     if is_success
       flash[:success] = "記録更新しました"
-      redirect_to edit_records_path(@user)
+      redirect_to request.referer
     else
       render 'edit_records', status: :unprocessable_entity
     end
@@ -84,7 +82,7 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "削除しました"
-    redirect_to users_url, status: :see_other
+    redirect_to request.referer, status: :see_other
   end
 
   private 
@@ -97,7 +95,7 @@ class UsersController < ApplicationController
   def _logged_in_user
     unless logged_in?
       flash[:danger] = "ログインしてください"
-      redirect_to(root_path, status: :see_other)
+      redirect_to(request.referer, status: :see_other)
     end
   end
 
@@ -106,7 +104,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user != current_user && current_user.authority < 2
       flash[:danger] = "権限がありません"
-      redirect_to(root_path, status: :see_other)
+      redirect_to(request.referer, status: :see_other)
     end
   end
 
@@ -115,7 +113,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if current_user.authority < 1 || current_user == @user
       flash[:danger] = "記録権限がありません"
-      redirect_to(root_path, status: :see_other)
+      redirect_to(request.referer, status: :see_other)
     end
   end
 
@@ -123,7 +121,7 @@ class UsersController < ApplicationController
   def _admin_user
     if current_user.authority < 2
       flash[:danger] = "管理権限がありません"
-      redirect_to(root_path, status: :see_other)
+      redirect_to(request.referer, status: :see_other)
     end
   end
 end

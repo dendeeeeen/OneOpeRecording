@@ -3,12 +3,14 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(name: params[:session][:name])
     unless user
-      flash.now[:danger] = 'アカウントは登録されていません'
+      flash[:danger] = '登録されていないアカウントです'
+      redirect_to request.referer
       return
     end
 
     unless user.authenticate(params[:session][:password])
-      flash.now[:danger] = 'パスワードが違います'
+      flash[:danger] = 'パスワードが違います'
+      redirect_to request.referer
       return
     end
 

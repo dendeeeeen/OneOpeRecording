@@ -19,7 +19,7 @@ class TrophiesController < ApplicationController
     
     if is_success
       flash[:success] = "トロフィ更新しました"
-      redirect_to edit_trophies_path
+      redirect_to request.referer
     else
       render 'edit_trophies', status: :unprocessable_entity
     end
