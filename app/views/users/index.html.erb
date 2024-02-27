@@ -18,28 +18,10 @@
   	  </td>
   	</tr>
 
-  	<tr>
-  		<td>権限</td>
-  		<td>
-  			<div class="form-check form-check-inline">
-  				<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-  				<label class="form-check-label" for="inlineCheckbox1">閲覧</label>
-  			</div>
-  			<div class="form-check form-check-inline">
-  				<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-  				<label class="form-check-label" for="inlineCheckbox2">記録</label>
-  			</div>
-  			<div class="form-check form-check-inline">
-  				<input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-  				<label class="form-check-label" for="inlineCheckbox3">管理</label>
-  			</div>
-  		</td>
-  	</tr>
-
   	<tr id="search-button-row">
   		<td colspan="2"> <!-- この行を1列に拡張 -->
   			<!-- 検索ボタン -->
-  			<button type="submit" class="btn btn-outline-orange mb-0" id="search-button">検索</button>
+				<button class="btn btn-outline-orange mb-0" id="search-button" data-turbolinks="false" type="submit">検索</button>
   		</td>
   	</tr>
   </tbody></table>
@@ -61,7 +43,7 @@
     		<th scope="col">アカウント削除</th>
     	</tr>
     </thead>
-    <tbody>
+    <tbody id="accountList">
 			<% @users.each do |user| %>
 				<tr>
 					<td><%= link_to user.name, edit_user_path(user) %></td>						
