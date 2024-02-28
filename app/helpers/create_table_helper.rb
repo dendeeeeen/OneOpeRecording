@@ -72,8 +72,8 @@ module CreateTableHelper
       { name: "LACT-450",                 path: "/assets/weapon_stringer_reeflux450.png"        },
       { name: "ジムワイパー",             path: "/assets/weapon_saber_splatanastamper.png"      },
       { name: "ドライブワイパー",         path: "/assets/weapon_saber_splatanawiper.png"        },
-      { name: "ガエンFF",                 path: "/assets/weapon_random.png"                     },
-      { name: "24式張替傘・甲",           path: "/assets/weapon_random.png"                     },
+      { name: "ガエンFF",                 path: "/assets/weapon_maneuver_douserdualiesff.png"                     },
+      { name: "24式張替傘・甲",           path: "/assets/weapon_shelter_recycledbrella24mki.png"                     },
       { name: "ランダム",                 path: "/assets/weapon_random.png"                     },
       { name: "クマフェス",               path: "/assets/weapon_random_golden.png"              },
     ]

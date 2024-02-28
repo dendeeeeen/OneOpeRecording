@@ -1,4 +1,6 @@
 class TrophiesController < ApplicationController
+  before_action :_admin_user, only: [:edit, :update]
+
   def index
     @trophies = Trophy.all
   end
@@ -22,6 +24,16 @@ class TrophiesController < ApplicationController
       redirect_to request.referer
     else
       render 'edit_trophies', status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  # 管理者かどうか確認
+  def _admin_user
+    if current_user.authority < 2
+      flash[:danger] = "管理権限がありません"
+      redirect_to request.referer, status: :see_other
     end
   end
 end

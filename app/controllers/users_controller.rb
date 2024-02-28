@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
-  before_action :_logged_in_user, only: [:index, :edit, :update, :destroy, :edit_records, :update_records]
-  before_action :_correct_user,   only: [:edit, :update]
-  before_action :_recording_user, only: [:edit_records, :update_records]
+  before_action :_logged_in_user, only: [:index, :index_recorders, :edit, :edit_records, :update, :update_records, :destroy]
+  before_action :_recording_user, only: [:edit_records, :update_records, :index_recorders]
   before_action :_admin_user,     only: [:index, :destroy]
+  before_action :_edit_user,      only: [:edit, :update]
+  before_action :_edit_record,    only: [:edit_records, :update_records]
 
   def index
     @users = User.all
   end
 
-  def search
+  def index_recorders
     @users = User.all
   end
 
@@ -95,25 +96,15 @@ class UsersController < ApplicationController
   def _logged_in_user
     unless logged_in?
       flash[:danger] = "ログインしてください"
-      redirect_to(request.referer, status: :see_other)
-    end
-  end
-
-  # 正しいユーザーかどうか確認
-  def _correct_user
-    @user = User.find(params[:id])
-    if @user != current_user && current_user.authority < 2
-      flash[:danger] = "権限がありません"
-      redirect_to(request.referer, status: :see_other)
+      redirect_to request.referer, status: :see_other
     end
   end
 
   # 記録権限があるか確認
   def _recording_user 
-    @user = User.find(params[:id])
-    if current_user.authority < 1 || current_user == @user
+    if current_user.authority < 1
       flash[:danger] = "記録権限がありません"
-      redirect_to(request.referer, status: :see_other)
+      redirect_to request.referer, status: :see_other
     end
   end
 
@@ -121,7 +112,25 @@ class UsersController < ApplicationController
   def _admin_user
     if current_user.authority < 2
       flash[:danger] = "管理権限がありません"
-      redirect_to(request.referer, status: :see_other)
+      redirect_to request.referer, status: :see_other
+    end
+  end
+
+  # ユーザが編集できるかどうか確認
+  def _edit_user
+    @user = User.find(params[:id])
+    if @user != current_user && current_user.authority < 2
+      flash[:danger] = "権限がありません"
+      redirect_to request.referer, status: :see_other
+    end
+  end
+
+  # レコードが編集できるかどうか確認
+  def _edit_record
+    @user = User.find(params[:id])
+    if @user == current_user || current_user.authority < 1
+      flash[:danger] = "権限がありません"
+      redirect_to request.referer, status: :see_other
     end
   end
 end

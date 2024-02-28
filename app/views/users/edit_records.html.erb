@@ -8,26 +8,26 @@
   </div>
 
   <div id="your-records-container">
-    <table class="table table-bordered table-striped custom-rounded">
-      <!-- テーブルヘッダ -->
-      <thead>
-        <tr>
-          <th class="bg-dark text-white bg">
-            <img src="/assets/weapon_random.png" alt="支給ブキ" class="stage-image">
-            <span class="stage-name">支給ブキ</span>
-          </th>
-          <% stages.each do |stage| %>
+    <%= form_with(model: @user, url: update_records_path(params[:id])) do |f| %>
+      <table class="table table-bordered table-striped custom-rounded">
+        <!-- テーブルヘッダ -->
+        <thead>
+          <tr>
             <th class="bg-dark text-white bg">
-              <img src=<%= stage[:path] %> alt=<%= stage[:name] %> style="width:128px; height:72px;">
-              <span class="stage-name"><%= stage[:name] %></span>
+              <img src="/assets/weapon_random.png" alt="支給ブキ" class="stage-image">
+              <span class="stage-name">支給ブキ</span>
             </th>
-          <% end %>
-        </tr>
-      </thead>
-      
-      <!-- テーブル -->
-      <tbody id="weapon-table-body">
-        <%= form_with(model: @user, url: update_records_path(params[:id])) do |f| %>
+            <% stages.each do |stage| %>
+              <th class="bg-dark text-white bg">
+                <img src=<%= stage[:path] %> alt=<%= stage[:name] %> style="width:128px; height:72px;">
+                <span class="stage-name"><%= stage[:name] %></span>
+              </th>
+            <% end %>
+          </tr>
+        </thead>
+
+        <!-- テーブル -->
+        <tbody id="weapon-table-body">
           <% weapons.each.with_index(1) do |weapon, wi| %>
             <tr style=<%= wi%2==0 ? 'background-color:#3a414a;' : 'background-color:#373e46;'%>>
               <!-- 武器 -->
@@ -64,8 +64,8 @@
               </div>
             </td>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    <% end %>
   </div>
 </div>
