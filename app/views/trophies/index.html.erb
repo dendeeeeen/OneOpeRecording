@@ -1,10 +1,10 @@
 <% provide(:title, "トロフィ表示") %>
-<% provide(:back_graphic, 'background-image: url(/assets/bg_page-border-lines.png);') %>
+<% provide(:back_graphic, 'background-image: url(' + asset_path("bg_page-border-lines.png") + ');') %>
 
 <div id="page-border-lines" class="content-page" >
   <div id="records-content">
     <div class="border-lines-image">
-    <img src="/assets/border-lines-image.png" alt="Title">
+    <img src=<%= asset_path('border-lines-image.png') %> alt="Title">
   </div>
 
   <div id="border-lines-container">
@@ -13,7 +13,7 @@
       <thead>
         <tr>
           <th class="bg-dark text-white bg">
-            <img src="/assets/weapon_random.png" alt="支給ブキ" class="stage-image">
+            <img src=<%= asset_path('weapon_random.png') %> alt="支給ブキ" class="stage-image">
             <span class="stage-name">支給ブキ</span>
           </th>
           <% stages.each do |stage| %>
@@ -42,13 +42,13 @@
             <!-- キケン度 -->
             <% stages.each.with_index(1) do |stage, si| %>
               <td style="color: rgb(255, 255, 255); font-size: 24px;">
-                <img src="/assets/weapon_trophy_gold.png" style="width: 32px; height: 32px; vertical-align: middle;">
+                <img src=<%= asset_path('weapon_trophy_gold.png') %> style="width: 32px; height: 32px; vertical-align: middle;">
                 <span style="display: inline-block; min-width: 70px; text-align: right;"><%= @trophies.find_by(stage_id: si, weapon_id: wi, color_id: 1).hazard_level %>%</span>
                 <br>
-                <img src="/assets/weapon_trophy_silver.png" style="width: 32px; height: 32px; vertical-align: middle;">
+                <img src=<%= asset_path('weapon_trophy_silver.png') %> style="width: 32px; height: 32px; vertical-align: middle;">
                 <span style="display: inline-block; min-width: 70px; text-align: right;"><%= @trophies.find_by(stage_id: si, weapon_id: wi, color_id: 2).hazard_level %>%</span>
                 <br>
-                <img src="/assets/weapon_trophy_bronze.png" style="width: 32px; height: 32px; vertical-align: middle;">
+                <img src=<%= asset_path('weapon_trophy_bronze.png') %> style="width: 32px; height: 32px; vertical-align: middle;">
                 <span style="display: inline-block; min-width: 70px; text-align: right;"><%= @trophies.find_by(stage_id: si, weapon_id: wi, color_id: 3).hazard_level %>%</span>
               </td>
             <% end %>

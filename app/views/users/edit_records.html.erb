@@ -1,10 +1,10 @@
-<% provide(:title, "トロフィ管理") %>
-<% provide(:back_graphic, 'background-image: url(/assets/bg_page-your-records.png);') %>
+<% provide(:title, @user.name+"さんの記録編集") %>
+<% provide(:back_graphic, 'background-image: url(' + asset_path("bg_page-your-records.png") + ');') %>
 
 <div id="page-your-records" class="content-page" >
   <div id="records-content">
     <div class="your-records-image">
-    <img src="/assets/your-records-image.png" alt="Title">
+    <img src=<%= asset_path('your-records-image.png') %> alt="Title">
   </div>
 
   <div id="your-records-container">
@@ -14,7 +14,7 @@
         <thead>
           <tr>
             <th class="bg-dark text-white bg">
-              <img src="/assets/weapon_random.png" alt="支給ブキ" class="stage-image">
+              <img src=<%= asset_path('weapon_random.png') %> alt="支給ブキ" class="stage-image">
               <span class="stage-name">支給ブキ</span>
             </th>
             <% stages.each do |stage| %>

@@ -134,7 +134,7 @@ body {
 }
 
 #your-records-container .bg {
-  background-image: url(/assets/bg.png);
+  background-image: image-url('bg.png');
   background-size: cover;
 }
 
@@ -254,7 +254,7 @@ body {
 }
 
 #border-lines-container .bg {
-  background-image: url(/assets/bg.png);
+  background-image: image-url('bg.png');
   background-size: cover;
 }
 
