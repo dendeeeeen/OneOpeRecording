@@ -1,36 +1,36 @@
 @font-face {
 	font-family: 'Noto Sans JP';
-	src: font-url('/assets/fonts/NotoSansJP-Regular.ttf') format('truetype');
+	src: asset_url('fonts/NotoSansJP-Regular.ttf') format('truetype');
 	font-weight: 400; /* Regular */
 }
 
 @font-face {
 	font-family: 'Noto Sans JP';
-	src: font-url('/assets/fonts/NotoSansJP-Bold.ttf') format('truetype');
+	src: asset_url('fonts/NotoSansJP-Bold.ttf') format('truetype');
 	font-weight: 700; /* Bold */
 }
 
 @font-face {
 	font-family: 'Noto Sans JP';
-	src: font-url('/assets/fonts/NotoSansJP-Light.ttf') format('truetype');
+	src: asset_url('fonts/NotoSansJP-Light.ttf') format('truetype');
 	font-weight: 300; /* Light */
 }
 
 @font-face {
 	font-family: 'Splatoon1';
-	src: font-url('/assets/fonts/s1kanji.woff2') format('woff2');
+	src: asset_url('fonts/s1kanji.woff2') format('woff2');
 }
 @font-face {
 	font-family: 'Splatoon1';
-	src: font-url('/assets/fonts/s1kana.woff2') format('woff2');
+	src: asset_url('fonts/s1kana.woff2') format('woff2');
 }
 
 @font-face {
 	font-family: 'Splatfont2';
-	src: font-url('/assets/fonts/Splatfont2.ttf') format('truetype');
+	src: asset_url('fonts/Splatfont2.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Paintball';
-	src: font-url('/assets/fonts/Paintball_Beta_4a.otf') format('opentype');
+	src: asset_url('fonts/Paintball_Beta_4a.otf') format('opentype');
 }
