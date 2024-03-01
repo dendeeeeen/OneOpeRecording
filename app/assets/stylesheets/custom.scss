@@ -69,11 +69,6 @@ body {
   max-width: 1440px; /* 最大横幅を1440pxに設定 */
   margin: auto; /* 左右のマージンを自動調整して中央に配置 */
   border-collapse: collapse; /* 境界線を重ねる */
-  border-spacing: 0;
-}
-
-#your-records-container td {
-  padding: 0;
 }
 
 #your-records-container th {
@@ -194,11 +189,6 @@ body {
   max-width: 1440px; /* 最大横幅を1440pxに設定 */
   margin: auto; /* 左右のマージンを自動調整して中央に配置 */
   border-collapse: collapse; /* 境界線を重ねる */
-  border-spacing: 0;
-}
-
-#border-lines-container td {
-  padding: 0;
 }
 
 #border-lines-container th {
