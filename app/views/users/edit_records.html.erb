@@ -19,7 +19,7 @@
             </th>
             <% stages.each do |stage| %>
               <th class="bg-dark text-white bg">
-                <img src=<%= stage[:path] %> alt=<%= stage[:name] %> style="width:128px; height:72px;">
+                <img src=<%= asset_path(stage[:image]) %> alt=<%= stage[:name] %> style="width:128px; height:72px;">
                 <span class="stage-name"><%= stage[:name] %></span>
               </th>
             <% end %>
@@ -33,7 +33,7 @@
               <!-- 武器 -->
               <td style=<%= wi%2==0 ? 'background-color:#3a414a;' : 'background-color:#373e46;'%>>
                 <div style="display: flex; align-items: center;">
-                  <img src=<%= weapon[:path] %> alt=<%= weapon[:name] %> style="vertical-align: middle;">
+                  <img src=<%= asset_path(weapon[:image]) %> alt=<%= weapon[:name] %> style="vertical-align: middle;">
                   <div style="display: block; margin-left: 10px;">
                     <div style="color: rgb(255, 79, 29); text-align: left;">バイト専用</div>
                     <div style="color: white; white-space: nowrap; text-align: left;"><%= weapon[:name] %></div>
@@ -43,9 +43,9 @@
               <!-- キケン度 -->
               <% stages.each.with_index(1) do |stage, si| %>
                 <td>
-                  <%= f.hidden_field 'records[][stage_id]', value: si %>
-                  <%= f.hidden_field 'records[][weapon_id]', value: wi %>
-                  <%= f.number_field 'records[][hazard_level]', in: 0..333, value: @records.find_by(stage_id: si, weapon_id: wi).hazard_level, step: 1 %>
+                  <%= f.hidden_field 'records[][stage_id]', value: stage[:id] %>
+                  <%= f.hidden_field 'records[][weapon_id]', value: weapon[:id] %>
+                  <%= f.number_field 'records[][hazard_level]', in: 0..333, value: @records.find_by(stage_id: stage[:id], weapon_id: weapon[:id]).hazard_level, step: 1 %>
                 </td>
               <% end %>
             </tr>
