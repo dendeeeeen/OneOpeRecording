@@ -30,8 +30,6 @@ class UsersController < ApplicationController
           @user.clearrecords.create!(weapon_id: wi, stage_id: si)
         end
       end
-      reset_session
-      log_in @user
       flash[:success] = "アカウント登録しました"
       redirect_to @user
     else
