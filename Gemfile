@@ -16,13 +16,14 @@ gem "stimulus-rails",  "1.2.1"
 gem "jbuilder",        "2.11.5"
 gem "puma",            "5.6.5"
 gem "bootsnap",        "1.16.0", require: false
-gem "sqlite3",         "1.6.1"
 
 group :development, :test do
+  gem "sqlite3",         "1.6.1"
   gem "debug",   "1.7.1", platforms: %i[ mri mingw x64_mingw ]
 end
 
 group :development do
+  gem "sqlite3",         "1.6.1"
   gem "web-console",         "4.2.0"
   gem "solargraph",          "0.48.0"
   gem "irb",                 "1.10.0"
@@ -34,6 +35,7 @@ group :production do
 end
 
 group :test do
+  gem "sqlite3",         "1.6.1"
   gem "capybara",                 "3.38.0"
   gem "selenium-webdriver",       "4.8.3"
   gem "webdrivers",               "5.2.0"
