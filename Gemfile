@@ -29,6 +29,10 @@ group :development do
   gem "repl_type_completor", "0.1.0"
 end
 
+group :production do
+  gem 'pg', "1.4"
+end
+
 group :test do
   gem "capybara",                 "3.38.0"
   gem "selenium-webdriver",       "4.8.3"
