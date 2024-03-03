@@ -65,7 +65,7 @@
           <button class="btn btn-sm btn-success dropdown-toggle my-sm-2" type="button" id="dropdownLoginButton" data-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-person"></i> ログイン
           </button>
-          <div class="dropdown-menu dropdown-menu-right">
+          <div class="dropdown-menu dropdown-menu-right" style="min-width: 15em;">
             <%= form_with(url: login_path, scope: :session, class: "px-4 py-3") do |f| %>
               <div class="form-group">
               <%= f.label :アカウント名 %>
